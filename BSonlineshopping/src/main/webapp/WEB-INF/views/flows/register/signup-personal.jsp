@@ -1,112 +1,117 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-<spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
-<spring:url var="images" value="/resources/images" />
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@include file="../shared/flows-header.jsp"%>
 
 
-<c:set var="contextRoot" value="${pageContext.request.contextPath }" />
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="utf-8">
-<meta http-equiv="x-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>BSonlineshopping-${title}</title>
-
-<script>
-	window.menu = '${title}';
-
-	window.contextRoot = '${contextRoot}'
-</script>
-
-
-<!-- Bootstrap core CSS -->
-<link href="${css }/bootstrap.css" rel="stylesheet">
-
-<!-- Bootstrap readable theme -->
-<link href="${css }/bootstrap readable theme.css" rel="stylesheet">
-
-<!-- Bootstrap DataTables -->
-<link href="${css }/dataTables.bootstrap.css" rel="stylesheet">
-
-
-
-<!-- Add custom CSS here -->
-<link href="${css }/myapp.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-	<div class="wrapper">
-		`
-		<!-- Navigation -->
-		
-<nav class="navbar navbar-inverse navabr-fixed-top" role="navigation">
 <div class="container">
-<div class="navbar-header">
-<a class="navbar-brand" href="${flowExecutionUrl}&_eventId_home">Home</a>
-</div>
-</div>
 
-</nav>		
-
-		<!-- Page Content -->
-
-		<div class="content">
+<div class="row">
+ 
+ <div class="col-md-6 col-md-offset-3">
+  
+  <div class="panel panel-primary">
+  
+   <div class="panel-heading">
+    <h4>Sign Up - Personal</h4>
+   </div>
+   
+   <div class="panel-body">
+        
+    <sf:form
+     method="POST"
+     class="form-horizontal"
+     id="registerForm"
+     modelAttribute="user"
+    >
+      
+       
+    <div class="form-group">
+     <label class="control-label col-md-4">First Name</label>
+     <div class="col-md-8">
+      <sf:input type="text" path="firstName" class="form-control"
+       placeholder="First Name" />
 		
-		<div class="container">
-		
-		<h3>This will be trigger by flow</h3>
-		</div>
-
-		
-		</div>
-
-		<!-- Footer comes here -->
-
-		<%@include file="../../shared/footer.jsp"%>
-
-		<!-- /.container -->
-
-		<!-- JQuery -->
-		<script src="${js}/jquery.js"></script>
-
-		<!-- JQuery Validator-->
-		<script src="${js}/jquery.validate.js"></script>
+     </div>
+    </div>
 
 
-		<!-- bootstrap  core java script-->
-		<script src="${js}/bootstrap.js"></script>
+       <div class="form-group">
+        <label class="control-label col-md-4">Last Name</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="lastName" class="form-control"
+          placeholder="Last Name" />
+          
+        </div>
+       </div>
+      
+       <div class="form-group">
+        <label class="control-label col-md-4">Email</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="email" class="form-control"
+          placeholder="abc@zyx.com" />
+        
+		 
+        </div>
+       </div>
 
-		<!-- DataTable Plugin -->
-		<script src="${js}/jquery.dataTables.js"></script>
+       <div class="form-group">
+        <label class="control-label col-md-4">Contact Number</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="contactnumber" class="form-control"
+          placeholder="XXXXXXXXXX" maxlength="10" />
+        
+        </div>
+       </div>
+       
+       <div class="form-group">
+        <label class="control-label col-md-4">Password</label>
+        <div class="col-md-8">
+         <sf:input type="password" path="password" class="form-control"
+          placeholder="Password" />
+              
+        </div>
+       </div>
+       
+       
+       
+       <!-- radio button using bootstrap class of radio-inline -->
+	  
+	   <div class="form-group">
+	     <label class="control-label col-md-4">Select Role</label>
+	     <div class="col-md-8">
+	       <label class="radio-inline">
+	        <sf:radiobutton path="role" value="USER" checked="checked"/> User     
+	       </label>
+	       <label class="radio-inline">
+	        <sf:radiobutton path="role" value="SUPPLIER"/> Supplier
+	       </label>
+	     </div>
+	    </div>       
 
-		<!-- DataTable Bootstrap Script -->
-		<script src="${js}/dataTables.bootstrap.js"></script>
+      
+       <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
 
-		<!-- Bootbox -->
-		<script src="${js}/bootbox.min.js"></script>
+<!-- submit button inside the form -->
+
+			<button type="submit" class="btn btn-primary"
+				name="_eventId_billing">
+				
+				Next - Billing <span class="glyphicon glyphicon-chevron-right"></span>
+			
+			</button>
+ 
+        </div>
+       </div>
+
+      </sf:form>     
+     </div>
+    </div>
+   </div>
+  </div>
+	
+
+			</div>
 
 
 
-		<!-- self coded java script -->
-		<script src="${js}/myapp.js"></script>
-
-	</div>
-
-</body>
-
-</html>
+<%@include file="../shared/flows-footer.jsp"%>
