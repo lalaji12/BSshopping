@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Address implements Serializable {
 
@@ -41,21 +43,35 @@ public void setUser(User user) {
 /*--------*/
 
 @Column(name="address_line_one")
+@NotBlank(message="Please enter addressLineOne!")
 private String addressLineOne;
+
 @Column(name="address_line_two")
+@NotBlank(message="Please enter addressLineTwo!")
 private String addressLineTwo;
+
+@NotBlank(message="Please enter city name!")
 private String city;
+
+@NotBlank(message="Please enter state name!")
 private String state;
+
+@NotBlank(message="Please enter country!")
 private String country;
+
 @Column(name="postal_code")
+@NotBlank(message="Please enter postal code!")
 private String postalCode;
+
+@Column(name="is_shipping")
 private boolean shipping;
+
+@Column(name="is_billing")
 private boolean billing;
 
 /*
  * setter and getter for the fields
  */
-
 
 public int getId() {
 	return id;
@@ -112,17 +128,17 @@ public boolean isBilling() {
 public void setBilling(boolean billing) {
 	this.billing = billing;
 }
+@Override
+public String toString() {
+	return "Address [id=" + id + ", user=" + user + ", addressLineOne=" + addressLineOne
+			+ ", addressLineTwo=" + addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country
+			+ ", postalCode=" + postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
+}
+
 
 /*
  * toString for logging and debugging activity
  */
-
-@Override
-public String toString() {
-	return "Address [id=" + id + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
-			+ addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
-			+ postalCode + ", shipping=" + shipping + ", billing=" + billing + "]";
-}
 
 
 }
