@@ -17,7 +17,7 @@ public class UserTestCase {
 
 	private static AnnotationConfigApplicationContext context;
 
-	private static UserDAO userDAO;
+	private static UserDAO userDAO;  
 	private User user = null;
 	private Cart cart = null;
 	private Address address = null;
